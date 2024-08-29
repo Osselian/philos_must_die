@@ -6,7 +6,7 @@
 /*   By: sosokin <sosokin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 18:05:51 by sosokin           #+#    #+#             */
-/*   Updated: 2024/08/28 19:40:34 by sosokin          ###   ########.fr       */
+/*   Updated: 2024/08/29 12:40:08 by sosokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int	main(int argc, char **argv)
 
 	if (argc < 5)
 		return (printf("At least 4 arguments required!\n"));
-	num_args =  try_get_args(argv + 1, argc - 1);
+	num_args = try_get_args(argv + 1, argc - 1);
 	if (!num_args)
 		return (1);
 	phil_numb = num_args[0];

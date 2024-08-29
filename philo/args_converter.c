@@ -6,7 +6,7 @@
 /*   By: sosokin <sosokin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 20:48:44 by sosokin           #+#    #+#             */
-/*   Updated: 2024/08/28 19:23:24osokin          ###   ########.fr       */
+/*   Updated: 2024/08/29 12:36:50 by sosokin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,25 +58,38 @@ int	ft_atoi(const char *str)
 	return (res * neg);
 }
 
+static int	check_numb(int cur, char *arg, int i, int *num_args)
+{
+	if (cur <= 0 || !is_num(arg) || (i == 0 && cur > 2000))
+	{
+		printf("Incorrect argument - %s\n", arg);
+		free(num_args);
+		return (0);
+	}
+	if (i == 0 && cur > 200)
+	{
+		printf("Maximum philos numb is 200!\n");
+		free(num_args);
+		return (0);
+	}
+	return (1);
+}
+
 int	*try_get_args(char **args, int argc)
 {
 	int	*num_args;
 	int	cur;
-	int i;
+	int	i;
 
 	num_args = (int *)malloc(sizeof(int) * argc);
 	if (!num_args)
-		return NULL;
+		return (NULL);
 	i = 0;
 	while (i < argc)
 	{
 		cur = ft_atoi(*args);
-		if (cur < 0 || !is_num(*args))
-		{
-			printf("Incorrect argument - %s\n", *args);
-			free(num_args);
+		if (!check_numb(cur, *args, i, num_args))
 			return (NULL);
-		}
 		num_args[i] = cur;
 		args++;
 		i++;
